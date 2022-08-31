@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>SETU</title>
+        <link rel="icon" type="image/x-icon" href="https://rural.nic.in/sites/all/themes/rural/favicon.ico"/>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/c/c8/Ministry_of_Rural_Development.png" alt="Ministry_of_Rural_Development" width="400" height="150" style = "float: left"/>
+        <img src="https://rural.nic.in/sites/all/themes/rural/images/swach-bharat.png" alt="swach-bharat" style= "float: right"/> 
+        <img src="https://rural.nic.in/sites/default/files/flag_india.gif" alt="Indian flag" style= "float: right"/>
+<br><br>
+        <style>
+            body{
+                color:black;
+                background-image: url('../static/bridge4.jpg');
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-attachment: fixed;
+                position: absolute;
+            }
+                
+            div{
+                padding: 5px;
+                float: right;
+            }    
+
+            ul{
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+                overflow: hidden;
+                background-color: #333;
+            }
+            
+            li{
+                float: left;
+            }
+            
+            li a{
+                display: block;
+                color: white;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+            }
+            
+            li a:hover:not(.active){
+                background-color: #111;
+            }
+            
+            .active{
+                background-color: #04AA6D;
+            } 
+            .container {
+                border-radius: 5px;
+                width: 50%;
+                margin-left: auto;
+                margin-right: auto;
+                background-color: #f2f2f2;
+                padding: 20px;
+            }
+            .button{
+                /* border:none; */
+                border-radius:10px;}
+            .button:hover {
+                background-color:#6c6d71;
+                transition: 0.7s;
+                /* border:none; */
+                border-radius:10px;
+            }
+        </style>
+        <script type="text/javascript">
+            function googleTranslateElementInit() {
+                new google.translate.TranslateElement({
+                    pageLanguage: 'en',
+                    includedLanguages : 'ta,te,gu,ur,hi,as,bn,doi,ur,en,kn,ml,mr,lus,or,pa',
+                    layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+                },
+                'google_translate_element');
+            }
+        </script>
+        <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">  </script> 
+    </head>
+    <body>
+        <br><br>
+        <center><h1 style="text-align:left;width:45%;" class="container">SETU-Identification of Missing Bridges</h1></center>                       
+        <ul>
+            <li><a href="{{url_for('home')}}">Home</a></li>
+            <li><a href="{{url_for('complaint')}}">Complaint</a></li>
+            <li style="float:right"><a href="{{url_for('adminlogin')}}">Admin Login</a></li>
+            <li style="float:right"><a href="{{url_for('contactus')}}">Contact Us</a></li>
+            <li style="float:right"><a href="{{url_for('aboutus')}}">About Us</a></li>
+            <div style="float:right" id="google_translate_element"></div>
+        </ul>       
+        <br><br>
+        <div style="border:1px solid #000000;width:80%;margin:80px;padding:25px" class="container">
+            <form method="POST" action="/usercomplaint">
+                <center><h1>FILL IN THE MAKE A REQUEST</h1><br><br></center>
+                Name: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" id="fname" name="fname" oninvalid="window.alert('Please enter your name!');"><br><br>
+                Phone: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="tel" id="phone" name="phone" required><br><br>
+                <!-- <form action="/">
+                    <input type="submit" value="Submit">
+                </form> -->
+                <div style="outline-color:red"> 
+                    {%if error %}
+                    {{error}}
+                    {% endif %}
+                </div>
+                <label> Select State: </label>
+                <select name="statename">
+                    <option value = "Andhra Pradesh" id="state" name="state"> Andhra Pradesh </option>
+                    <option value = "Arunachal Pradesh"> Arunachal Pradesh </option>
+                    <option value = "Assam"> Assam</option>
+                    <option value = "Bihar"> Bihar </option>
+                    <option value = "Chhattisgarh"> Chhattisgarh </option>
+                    <option value = "Goa">Goa</option>
+                    <option value = "Gujarat"> Gujarat </option>
+                    <option value = "Harayana"> Harayana </option>
+                    <option value = "Himachal Pradesh">Himachal Pradesh </option>
+                    <option value = "Jammu and Kashmir">Jammu and Kashmir </option>
+                    <option value = "Jharkhand"> Jharkhand </option>
+                    <option value = "Karnataka"> Karnataka </option>
+                    <option value = "Kerala"> Kerala </option>
+                    <option value = "Madhya Pradesh"> Madhya Pradesh </option>
+                    <option value = "Maharashtra"> Maharashtra </option>
+                    <option value = "Manipur"> Manipur </option>
+                    <option value = "Meghalaya"> Meghalaya </option>
+                    <option value = "Mizoram"> Mizoram </option>
+                    <option value = "Nagaland"> Nagaland </option>
+                    <option value = "Orissa"> Orissa </option>
+                    <option value = "Punjab"> Punjab </option>
+                    <option value = "Rajasthan"> Rajasthan </option>
+                    <option value = "Sikkim"> Sikkim </option>
+                    <option value = "Tamil Nadu"> Tamil Nadu </option>
+                    <option value = "Tripura"> Tripura </option>
+                    <option value = "Uttarakhand"> Uttarakhand </option>
+                    <option value = "Uttar Pradesh"> Uttar Pradesh </option>
+                    <option value = "West Bengal">West Bengal </option>
+                    <option value = "Andaman and Nicobar"> Andaman and Nicobar </option>
+                    <option value = "Chandigarh"> Chandigarh </option>
+                    <option value = "Dadra and Nagar Haveli"> Dadra and Nagar Haveli </option>
+                    <option value = "Daman and Diu"> Daman and Diu </option>
+                    <option value = "Delhi"> Delhi </option>
+                    <option value = "Lakshadweep"> Lakshadweep </option>
+                    <option value = "Pondicherry"> Pondicherry </option>
+                </select>
+                <br><br>
+                Motivation: <br><textarea id="mot" name="mot" rows="5" cols="100"></textarea><br><br>
+                Press submit to select location
+                <center><input type="submit" value="submit"></center>
+            </form>
+        </div>
+    </body>
+
+
+    
+</html>

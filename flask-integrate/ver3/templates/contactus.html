@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>SETU</title>
+        <link rel="icon" type="image/x-icon" href="https://rural.nic.in/sites/all/themes/rural/favicon.ico"/>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/c/c8/Ministry_of_Rural_Development.png" alt="Ministry_of_Rural_Development" width="400" height="150" style = "float: left"/>
+        <img src="https://rural.nic.in/sites/all/themes/rural/images/swach-bharat.png" alt="swach-bharat" style= "float: right"/> 
+        <img src="https://rural.nic.in/sites/default/files/flag_india.gif" alt="Indian flag" style= "float: right"/>
+<br><br>
+        <style>
+            body{
+                color:black;
+                background-color:white;
+                background-image: url('../static/bridge5.jpg');
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-attachment: fixed;
+                position: absolute;
+            }
+
+            ul {
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+                overflow: hidden;
+                background-color: #333;
+            }
+                     
+            li{
+                float: left;
+            }
+                     
+            li a {
+                display: block;
+                color: white;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+            }
+                     
+            li a:hover:not(.active) {
+                background-color: #111;
+            }
+                     
+            .active {
+                background-color: #04AA6D;
+            }
+            .container {
+                border-radius: 5px;
+                width: 50%;
+                margin-left: auto;
+                margin-right: auto;
+                background-color: #f2f2f2;
+                padding: 20px;
+            }
+            div{
+                padding: 5px;
+                float: right;
+            } 
+        </style>
+        <script type="text/javascript">
+            function googleTranslateElementInit() {
+                new google.translate.TranslateElement({
+                    pageLanguage: 'en',
+                    includedLanguages : 'ta,te,gu,ur,hi,as,bn,doi,ur,en,kn,ml,mr,lus,or,pa',
+                    layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+                },
+                'google_translate_element');
+            }
+        </script>
+        <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">  </script> 
+    </head>
+    <body>
+        <br><br>
+        <center><h1 style="text-align:left;width:45%;" class="container">SETU-Identification of Missing Bridges</h1></center>                       
+        <ul>
+            <li><a href="{{url_for('home')}}">Home</a></li>
+            <li><a href="{{url_for('complaint')}}">Complaint</a></li>
+            <li style="float:right"><a href="{{url_for('adminlogin')}}">Admin Login</a></li>
+            <li style="float:right"><a href="{{url_for('contactus')}}">Contact Us</a></li>
+            <li style="float:right"><a href="{{url_for('aboutus')}}">About Us</a></li>
+            <div style="float:right" id="google_translate_element"></div>
+        </ul>       
+        <br><br>
+        <div style="border:1px solid #000000;width:80%;margin:80px;padding:25px" class="container">
+            
+            
+            <h><b>Ministry of Rural Development</b></h>
+            
+            <p>Government of India</p>
+            <p>Krishi Bhavan,</p>   
+            <p>Dr.Rajendra Prasad Road,</p>
+            <p>New Delhi-110001</p>
+            <p>INDIA</p>
+            
+            <h><b>Web Information Manager</b></h>
+            
+            <b>Shri Amit Kataria</b>
+            
+            <p>Designation : JS(IT)</p>
+            <p>Email ID :</p>
+            <p>Phone No. : 011-23438014</p>
+            <p>Department : Ministry of Rural Development</p>
+        </div>
+    </body>
+</html>
+
+   

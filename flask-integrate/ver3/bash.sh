@@ -1,0 +1,1 @@
+echo "127.0.0.1  venus.http://127.0.0.1:5000/printpdf venus" >> /etc/hosts

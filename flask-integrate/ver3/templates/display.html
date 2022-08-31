@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>SETU</title>
+        <link rel="icon" type="image/x-icon" href="https://rural.nic.in/sites/all/themes/rural/favicon.ico"/>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/c/c8/Ministry_of_Rural_Development.png" alt="Ministry_of_Rural_Development" width="400" height="150" style = "float: left"/>
+        <img src="https://rural.nic.in/sites/all/themes/rural/images/swach-bharat.png" alt="swach-bharat" style= "float: right"/> 
+        <img src="https://rural.nic.in/sites/default/files/flag_india.gif" alt="Indian flag" style= "float: right"/>
+<br><br>
+        <style>
+            body{
+                color:black;
+                background-color:white;
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-image: url('../static/bridge5.jpg');
+                background-attachment: fixed;
+                position: absolute;
+            }
+                
+            div{
+                padding: 5px;
+                float: right;
+            }    
+
+            ul{
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+                overflow: hidden;
+                background-color: #333;
+            }
+            
+            li{
+                float: left;
+            }
+            
+            li a{
+                display: block;
+                color: white;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+            }
+            
+            li a:hover:not(.active){
+                background-color: #111;
+            }
+            
+            .active{
+                background-color:  #333;
+            } 
+
+            #usercomplaints{
+                font-family: Arial, Helvetica, sans-serif;
+                border-collapse: collapse;
+                width: 100%;
+            }
+
+            #usercomplaints td, #usercomplaints th {
+                border: 1px solid #ddd;
+                padding: 8px;
+            }
+
+            #usercomplaints tr:nth-child(even){background-color: #f2f2f2;}
+
+            #usercomplaints tr:hover {background-color: #ddd;}
+
+            #usercomplaints th {
+                padding-top: 12px;
+                padding-bottom: 12px;
+                text-align: left;
+                background-color:  #333;
+                color: white;
+            }
+            .container {
+                border-radius: 5px;
+                width: 50%;
+                margin-left: auto;
+                margin-right: auto;
+                background-color: #f2f2f2;
+                padding: 20px;
+            }
+            #myInput {
+                background-image: url('/css/searchicon.png');
+                background-position: 10px 10px;
+                background-repeat: no-repeat;
+                width: 90%;
+                font-size: 16px;
+                padding: 12px 20px 12px 40px;
+                border: 1px solid #ddd;
+                margin-bottom: 12px;
+            }
+        </style>
+        <script type="text/javascript">
+            function googleTranslateElementInit() {
+                new google.translate.TranslateElement({
+                    pageLanguage: 'en',
+                    includedLanguages : 'ta,te,gu,ur,hi,as,bn,doi,ur,en,kn,ml,mr,lus,or,pa',
+                    layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+                },
+                'google_translate_element');
+            }
+        </script>
+        <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">  </script> 
+        <script>
+            function myFunction() {
+              var input, filter, table, tr, td, i, txtValue;
+              input = document.getElementById("myInput");
+              filter = input.value.toUpperCase();
+              table = document.getElementById("usercomplaints");
+              tr = table.getElementsByTagName("tr");
+              for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[4];
+                if (td) {
+                  txtValue = td.textContent || td.innerText;
+                  if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                  } else {
+                    tr[i].style.display = "none";
+                  }
+                }       
+              }
+            }
+        </script>
+    </head>
+    <body>
+        <br><br>
+        <center><h1 style="text-align:left;width:45%;" class="container">SETU-Identification of Missing Bridges</h1></center>  
+        <ul>
+            <li><a href="{{url_for('home')}}">Home</a></li>
+            <li><a href="{{url_for('complaint')}}">Complaint</a></li>
+            <li style="float:right"><a href="{{url_for('adminlogin')}}">Admin Login</a></li>
+            <li style="float:right"><a href="{{url_for('contactus')}}">Contact Us</a></li>
+            <li style="float:right"><a href="{{url_for('aboutus')}}">About Us</a></li>
+            <div style="float:right" id="google_translate_element"></div>
+        </ul></style>
+        <div style="border:1px solid #000000;width:80%;margin:80px;padding:25px" class="container">
+        <center>
+            <h1>User Requests</h1>
+            <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for State" title="Type in a state">
+            <table id="usercomplaints">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Phone Number</th>
+                <th>State</th>
+                <th>Motivation</th>
+                <th>Request</th>
+                <th>Link</th>
+                <th>PDF Reports</th>
+            </tr>
+            {% for item in displaydata %}
+            <tr>
+                <td>{{item['id']}}</td>
+                <td>{{item['name']}}</td>
+                <td>{{item['phoneno']}}</td>
+                <td>{{item['state']}}</td>
+                <td>{{item['motivation']}}</td>
+                <td>{{item['req_value']}}</td>
+                <td><a href="/result/?id={{item['id']}}">Click here to Proceed</a></td>
+                <td></td>
+                <!-- <td><form method="POST" action="/result"><input type="submit" value="submit" id="{{item['id']}}"></form></td> -->
+            </tr>
+            {% endfor %}   
+            </table>     
+            
+            <br><br>
+            <form method="POST" action="/result">
+                Enter the place incase if not situated nearby: 
+                <input type="text" id="userloc" name="userloc">
+                
+            </form>
+            <br>
+            <br>
+            {%if msg%}
+              {{msg}}
+            {%endif%}
+            {%if error%}
+              <h1 style="color:red">{{error}}</h1>
+            {% endif %}
+        </center>
+        </div>
+    </body>
+</html>
